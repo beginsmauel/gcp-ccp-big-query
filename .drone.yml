@@ -1,0 +1,29 @@
+pipeline:
+    javaBuild:
+      image: maven:3.5.4-jdk-8
+      commands:
+        - mvn clean
+        - mvn package -Dcheckstyle.skip
+    dockerizeAndPushToDockerHub:
+      image: plugins/docker
+      repo: jbeginsamuel/demo-app
+      username: jbeginsamuel
+      password: Spurgen1981$
+      tags: ver7
+#  dockerizeAndPushToGoogleRegistry:
+#    image: plugins/gcr
+#    repo: civic-visitor-216107/publish
+#    tags: latest
+#    json_key: >
+#      {
+#      "type": "service_account",
+#      "project_id": "civic-visitor-216107",
+#      "private_key_id": "87755105eb1a4948e7380a8d6583fc9707993380",
+#      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDDTvJSP59y7dlH\nBhgF7ulyZ65SEHxj3ilUbE4T4A0PraaK5OABxhb7kQiiXBu6ASykaRRxLwY0SkRr\nGMVlIdHnagfZtbbxlg+7H6ptg9izlOLMV1DGMfEASfPDaaC71zYdb527jA1g/b/g\nHz3pHhbx1mV3eRQVXauM9z18eDQYoUliX6YrZBw3avNYfhlqQKhIjU59mI14cZmh\nTjfyIowLalYk5X6crH7W6s7FnoLvBuxQMmuyBqFBpWvPJkY8X+M4MJTjk2Sdvy8Z\npwRSTvn1iD5rN91EKokMukSKrQdikiI+OOEzstjyHkH35fWiWsC4NLCdOJ7nrKL/\nreicZ5SZAgMBAAECggEABCqlXoYTMp5an+pkPY8p3YoS9Nb7cl15U/7eAQxK9wpJ\nNuYYVc1aLOp8jMsqf8K55zWDLUF3sEqj0EWWY3iP2/AeBAHdieSdyAwORJkXGMis\nuHeF5n6HAc6yE7mHh25ZThI1IxzDJc4wB1nfRh+BVY4xerWjbSvDBsY5AnRlhx9z\nIdwUHONQE2JeqEiiz9/cy+ScfwAm+AJk1pqbQinez/ZhZyfCci1aO8OS5YN/73NK\nbCODsIGQVEhePrKgxWjaiqi5MhmONGiieTddrpVJ8qjn8QJPh7/bgr6hT9gr1YXI\n1NZhroHkan5qERNpxd7i92rwoGrHSbwThwtWANPkgQKBgQD5+0C1JSh06+yWn6Tr\n2aZPjWYxAf81m4hUKlFNOSzsnWpM4HZapNc2QjKT88TI7bmhE5dU8OljPRp4IQ9b\noGD3zBgXjzWrLx0XaAxKKGQeVPqnzP0tzNKeHW+r8fUFA+6tQ1KoC8DtxMrNwh0G\nqCgC3Q4XhAwnMtHvSDrRVVMHGQKBgQDIArgicfrAF5I4n29ZpRQUERFM7n3QluB2\n7PwShU0O/hbbaqCDiUa1e44zhn/+LJBydNpKaImxIC2Qinn7A1WPEVHlV1df2xre\nwNqr5B1vK9ohJoxu9RYunj4oXAYARjfpOk4nO3pGeXV/+eoC3FLEwhsTzZe6YE8J\n2BzRcJ4pgQKBgQCeyLVFWqDkA6d31VfQZ6N4DHzIzFfrGSvzKh4SSyr58NNAmaMT\n2HjLAilWSRTJ/BZY9jS9w3i7jGhvvbAfpzNwsrbq4BBa98Ymw/RqdlWB3sCILXDz\n0pJF1LTGJx5XXTQR4h1ymGSnosSfBZmiTNV9XCRDU6DUlTc8IkkaBnSCoQKBgEwd\n5M+PCvuBvO75lhnKnhqI6Emb1ZvFX4VC6SdvPYVAI5i7Onz0iElWzSZEwH8NnKdC\nWzTIFeantU91s7hYa343/C/IjoL3UoGFaXLTLHR7ftbw4a70bM2vAT7AzrPaBTso\nKkf59a3OWW4rwOf3yzQAHufpbR3Luyim60i1kCuBAoGBALWh+MYV+k65ozgVSFpS\nxj5uweTN6guXDv/OQgtbeN013jS2hwnx59/+kLwR97pmQzqXiAualRp147OMw3Wh\nRP55HYjCxJvw+R8eqb+kyWW+wHjK/ciPMaAAIDmtTL58jnbKXOqRopYzklJ5mU+6\niEcjxawdsQTFgqgw0gskMC6D\n-----END PRIVATE KEY-----\n",
+#      "client_email": "hybrid-cloud-service-account@civic-visitor-216107.iam.gserviceaccount.com",
+#      "client_id": "110198936783785057871",
+#      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+#      "token_uri": "https://oauth2.googleapis.com/token",
+#      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+#      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hybrid-cloud-service-account%40civic-visitor-216107.iam.gserviceaccount.com"
+#      }

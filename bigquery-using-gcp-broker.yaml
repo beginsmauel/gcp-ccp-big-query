@@ -1,0 +1,52 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ccp-bigquery-app-using-gcp-broker
+  namespace: bigquery-app
+spec:
+  template:
+    spec:
+      volumes:
+        # Make the 'pubsub-credentials' secret available as volume
+        # 'google-cloud-key'.
+        - name: google-cloud-key
+          secret:
+            secretName: bigquery-credentials
+      restartPolicy: OnFailure
+      containers:
+        - name: ccp-bigquery-app-using-gcp-broker
+          image: docker.io/jbeginsamuel/demo-app:ver7
+          volumeMounts:
+            # Mount the 'google-cloud-key' volume into the container file
+            # system.
+            - name: google-cloud-key
+              mountPath: /var/secrets/google
+          env:
+            # Pass the path to the private key JSON file from the mounted volume
+            # to the environment variable.
+            - name: "GOOGLE_APPLICATION_CREDENTIALS"
+              value: /var/secrets/google/privateKeyData
+
+            - name: "spring.cloud.gcp.credentials.location"
+              value: /var/secrets/google/privateKeyData
+
+            # The two environment variables below come from the 'gcp-pubsub'
+            # secret and, together, point at the Cloud Pub/Sub topic to use.
+            - name: "GOOGLE_CLOUD_PROJECT_ID"
+              valueFrom:
+                secretKeyRef:
+                  # Use the projectId value from the 'gcp-pubsub' secret created
+                  # as a result of binding to the Pub/Sub service instance.
+                  name: gcp-bigquery
+                  key: projectId
+            - name: "spring.cloud.gcp.project-id"
+              valueFrom:
+                secretKeyRef:
+                  # Use the projectId value from the 'gcp-pubsub' secret created
+                  # as a result of binding to the Pub/Sub service instance.
+                  name: gcp-bigquery
+                  key: projectId
+            - name: "GOOGLE_CLOUD_BIGQUERY_DATASET"
+              value: datasetCCP
+            - name: "GOOGLE_CLOUD_BIGQUERY_TABLE"
+              value: incomingdata

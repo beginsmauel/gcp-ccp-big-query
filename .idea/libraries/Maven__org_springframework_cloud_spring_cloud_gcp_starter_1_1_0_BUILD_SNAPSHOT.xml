@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.cloud:spring-cloud-gcp-starter:1.1.0.BUILD-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-gcp-starter/1.1.0.BUILD-SNAPSHOT/spring-cloud-gcp-starter-1.1.0.BUILD-20181011.153731-131.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-gcp-starter/1.1.0.BUILD-SNAPSHOT/spring-cloud-gcp-starter-1.1.0.BUILD-20181011.153731-131-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-gcp-starter/1.1.0.BUILD-SNAPSHOT/spring-cloud-gcp-starter-1.1.0.BUILD-20181011.153731-131-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
